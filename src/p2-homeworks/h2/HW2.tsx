@@ -6,7 +6,7 @@ export type AffairPriorityType = 'high' | 'middle' | 'low'
 export type AffairType = {
     _id: number,
     name: string,
-    priority: string
+    priority: AffairPriorityType
 }
 
 export type FilterType = 'all' | AffairPriorityType
@@ -21,28 +21,29 @@ const defaultAffairs: Array<AffairType> = [ // need to fix any
 ]
 
 // pure helper functions
-export const filterAffairs = (affairs: Array<AffairType>, filter: FilterType): any => {
+export const filterAffairs = (affairs: Array<AffairType>, filter: FilterType): Array<AffairType> => {
     if (filter === 'all') {
         return affairs;
-    }
+    } else
     if (filter === 'high') {
-        return affairs = affairs.filter(a => a.priority === 'high')
-    }
+        return  affairs.filter(a => a.priority === 'high')
+    } else
     if (filter === 'middle') {
-        return affairs = affairs.filter(a => a.priority === 'middle')
-    }
+        return  affairs.filter(a => a.priority === 'middle')
+    } else
     if (filter === 'low') {
-        return affairs = affairs.filter(a => a.priority === 'low')
-    }
+        return  affairs.filter(a => a.priority === 'low')
+    } else {
 
+    }
+    return affairs;
 }
-export const deleteAffair = (affairs: Array<AffairType>, _id: number): any => { // need to fix any
-    let filteredTasks = affairs.filter( a => a._id !== _id )
-    
+export const deleteAffair = (affairs: Array<AffairType>, _id: number): Array<AffairType> => { // need to fix any
+    return affairs.filter( a => a._id !== _id )
 }
 
 function HW2() {
-    const [affairs, setAffairs] = useState(defaultAffairs) // need to fix any
+    const [affairs, setAffairs] = useState<Array<AffairType>>(defaultAffairs) // need to fix any
     const [filter, setFilter] = useState<FilterType>('all')
 
     const filteredAffairs = filterAffairs(affairs, filter)

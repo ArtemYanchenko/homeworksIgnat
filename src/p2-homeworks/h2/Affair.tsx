@@ -5,17 +5,18 @@ import affairs from './Affairs';
 type AffairPropsType = {
     // key не нужно типизировать
     affair: AffairType // need to fix any
-    deleteAffairCallback: Function // need to fix any
+    deleteAffairCallback: (_id:number) => void  // need to fix any
 }
 
 function Affair(props: AffairPropsType) {
-    const deleteCallback = () => {props.deleteAffairCallback()}// need to fix
+    const deleteCallback = () => {props.deleteAffairCallback(props.affair._id)}// need to fix
 
     return (
         <div>
-            // show some text
+            <span>{props.affair.name} - </span>
+            <span>{props.affair.priority} - </span>
 
-            <button onClick={ (id)=> deleteCallback}>X</button>
+            <button onClick={deleteCallback}>X</button>
         </div>
     )
 }
