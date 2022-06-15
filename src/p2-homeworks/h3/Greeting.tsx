@@ -16,7 +16,7 @@ const Greeting: React.FC<GreetingPropsType> = (
     const inputClass = error ? s.error : '';
     return (
         <div>
-            <input value={name} onChange={setNameCallback} className={inputClass}/>
+            <input value={name} onChange={setNameCallback} className={inputClass} onKeyPress={ ( e )=>{if (e.key === 'Enter'){addUser()}}}/>
             <button onClick={addUser}>add</button>
             <span>{totalUsers}</span>
             <div className={s.errorMessage}>{error}</div>
