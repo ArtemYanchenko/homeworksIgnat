@@ -1,7 +1,39 @@
-.default {
+@keyframes blink {
+    0% {
+        left: -130%;
+    }
+    100% {
+        left: 130%;
+    }
 
+}
+
+
+.default {
+    background: aquamarine;
+    color: #000;
+    outline: none;
 }
 
 .red {
     background: red;
 }
+
+.button:after {
+    display: block;
+    content: '';
+    position: absolute;
+
+    left:-130%;
+    top:0;
+    height: 100%;
+    width:20%;
+
+    transform: skew(45deg);
+    opacity: .7;
+    background-color: #fff;
+}
+.button:hover:after {
+    animation: blink 0.5s linear;
+}
+

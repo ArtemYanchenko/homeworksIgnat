@@ -1,5 +1,14 @@
-.superInput {
+input:focus {
+    outline: none;
+    border: 1px solid #000;
+}
 
+
+.superInput {
+    margin:5px;
+
+    background: mediumaquamarine;
+    color:#000
 }
 
 .errorInput {
