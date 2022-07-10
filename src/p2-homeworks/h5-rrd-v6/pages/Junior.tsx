@@ -11,8 +11,8 @@ function Junior() {
     return (
         <div>
             JUNIOR
-            {/*<HW6/>*/}
-            {/*<HW7/>*/}
+            <HW6/>
+            <HW7/>
             {/*<HW8/>*/}
             {/*<HW9/>*/}
             {/*<HW10/>*/}
