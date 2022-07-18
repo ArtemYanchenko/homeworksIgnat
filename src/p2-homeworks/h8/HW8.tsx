@@ -2,7 +2,29 @@ import React, {useState} from 'react'
 import {homeWorkReducer} from './bll/homeWorkReducer'
 import SuperButton from '../h4/common/c2-SuperButton/SuperButton'
 
-// export type UserType =
+type UserType = {
+    _id: number, name: string, age: number
+}
+
+export type UsersType = Array<UserType>
+
+
+type sortUpAT = {
+    type: 'sort'
+    payload:'up'
+}
+
+type sortDownAT = {
+    type: 'sort'
+    payload:'down'
+}
+
+type checkListAT = {
+    type: 'check'
+    payload: 18
+}
+
+export type ActionType = sortUpAT | sortDownAT | checkListAT
 
 const initialPeople = [
     {_id: 0, name: 'Кот', age: 3},
@@ -14,17 +36,20 @@ const initialPeople = [
 ]
 
 function HW8() {
-    const [people, setPeople] = useState<any>(initialPeople) // need to fix any
+    const [people, setPeople] = useState<UsersType>(initialPeople) // need to fix any
 
     // need to fix any
-    const finalPeople = people.map((p: any) => (
+    const finalPeople = people.map((p: UserType) => (
         <div key={p._id}>
-            some name, age
+            {p.name} - {p.age}
         </div>
     ))
 
     const sortUp = () => setPeople(homeWorkReducer(initialPeople, {type: 'sort', payload: 'up'}))
 
+    const sortDown = () => setPeople(homeWorkReducer(initialPeople,{type: 'sort', payload: 'down'}))
+
+    const checkList = () => setPeople(homeWorkReducer(initialPeople,{type: 'check', payload:18}))
     return (
         <div>
             <hr/>
@@ -33,9 +58,10 @@ function HW8() {
             {/*should work (должно работать)*/}
             {finalPeople}
 
-            <div><SuperButton onClick={sortUp}>sort up</SuperButton></div>
-            <div>sort down</div>
-            check 18
+            <div><SuperButton onClick={sortUp}>sort up</SuperButton>
+            <SuperButton onClick={sortDown}>sort down</SuperButton>
+            <SuperButton onClick={checkList}>check 18</SuperButton></div>
+
 
             <hr/>
             {/*для личного творчества, могу проверить*/}
