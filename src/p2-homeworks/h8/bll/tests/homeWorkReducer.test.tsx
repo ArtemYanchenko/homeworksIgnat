@@ -2,7 +2,7 @@ import React from 'react'
 import {homeWorkReducer} from '../homeWorkReducer'
 import {UsersType} from '../../HW8';
 
-let initialState: UsersType // need to fix any
+let initialState: UsersType
 
 beforeEach(() => {
     initialState = [
